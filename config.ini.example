@@ -1,0 +1,7 @@
+[athomeapp]
+email=
+url=https://services.athomeapp.net/ServiceData/GetUserRoundJson
+
+[pushover]
+api_token=
+user_key=
