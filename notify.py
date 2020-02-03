@@ -31,13 +31,20 @@ def get_collections():
     if response.status_code == 200:
         collections = json.loads(response.content.decode('utf-8'))
         
-        output = []
+        ready = []
+        ignored = []
+        
         tomorrow = datetime.now() + timedelta(days=1)
         
         for collection in collections.get('userrounds'):
             container = collection.get('containername')
             
             if container == 'Chargeable garden waste bin' and not args.garden:
+                ignored.append(container)
+                continue
+                
+            if container in legacy and not args.old:
+                ignored.append(container)
                 continue
             
             try:
@@ -45,20 +52,24 @@ def get_collections():
                 pickup = datetime.strptime(soonest, '%d %m %Y %I:%M')
                 
                 if pickup.date() == tomorrow.date():
-                    output.append(container)
+                    ready.append(container)
             except IndexError:
                 pass
                 
-        if output:
-            print('{} waste collection(s) tomorrow ({})'.format(len(output), ', '.join(map(str, output))))
+        if ready:
+            print('{} collection(s) tomorrow ({})'.format(len(ready), ', '.join(map(str, ready))))
             
-            notification(output)
+            if ignored:
+                print('{} ignored ({})'.format(len(ignored), ', '.join(map(str, ignored))))
+            
+            notification(ready)
             
 def notification(collections):
     """
     Notify user of their collection day along with waste
     to be collected.
     :param collections: a list representing the waste collection items
+    :return: nothing
     """
     data = {'token': parser.get('pushover', 'api_token'),
             'user': parser.get('pushover', 'user_key'),
@@ -71,9 +82,14 @@ if __name__ == '__main__':
     parser = ConfigParser()
 
     arguments = argparse.ArgumentParser()
-    arguments.add_argument('-g', '--garden', help='specify whether to also check garden waste collection', action='store_true')
+    arguments.add_argument('-g', '--garden', help='include garden waste collection', action='store_true')
+    arguments.add_argument('-o', '--old', help='include old collections (small boxes)', action='store_true')
 
     args = arguments.parse_args()
+    
+    legacy = [
+        'Glass box', 'Paper & Cardboard', 'Plastic and Cans'
+    ]
     
     config_exists()
     get_collections()

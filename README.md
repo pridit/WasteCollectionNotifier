@@ -12,7 +12,8 @@ The current list of supported arguments can be found below:
 
 | Argument | Description |
 | -------- | ----------- |
-| --garden | specify whether to also check garden waste collection |
+| --garden | include garden waste collection |
+| --old    | include old collections (small boxes) |
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
