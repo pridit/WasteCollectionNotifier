@@ -5,6 +5,8 @@ Inspired by ["Alexa? Which bins do I need to take out?" - Reverse engineering th
 
 This script utilises the [Pushover](https://pushover.net/) API to handle sending push notifications to your device. You can find steps to guide you along the process of using this service [here](https://support.pushover.net/i7-what-is-pushover-and-how-do-i-use-it).
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Command Line Arguments
 You may want to include some additional features, such as garden waste notifications (not enabled by default as this is a chargeable service by councils).
 

@@ -2,6 +2,7 @@
 Notify: send a push notification with local waste collections.
 """
 
+import os
 import json
 import requests
 import argparse
@@ -79,7 +80,7 @@ def notification(collections):
     requests.post('https://api.pushover.net/1/messages.json', data)
     
 if __name__ == '__main__':
-    parser = ConfigParser()
+    parser = ConfigParser(os.environ)
 
     arguments = argparse.ArgumentParser()
     arguments.add_argument('-g', '--garden', help='include garden waste collection', action='store_true')
