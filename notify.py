@@ -55,6 +55,10 @@ def get_collections():
                 if pickup.date() == tomorrow.date():
                     ready.append(container)
             except IndexError:
+                # Empty array
+                pass
+            except AttributeError:
+                # 'None' (suspended collections?)
                 pass
                 
         if ready:
