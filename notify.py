@@ -27,7 +27,7 @@ def get_collections():
                'X-country': 'gb',
                'X-email': parser.get('athomeapp', 'email')}
 
-    response = requests.get(parser.get('athomeapp', 'url'), headers=headers)
+    response = requests.get(parser.get('athomeapp', 'url'), headers=headers, verify=False)
 
     if response.status_code == 200:
         collections = json.loads(response.content.decode('utf-8'))
