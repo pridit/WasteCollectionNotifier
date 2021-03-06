@@ -1,4 +1,6 @@
 # Unix-style newlines with a newline ending every file
 [*]
 end_of_line = lf
-insert_final_newline = true
+
+[app.json]
+indent_size = 2
