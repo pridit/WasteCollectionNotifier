@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    environment:
+      - ATHOMEAPP_EMAIL=
+      - ATHOMEAPP_URL=https://services.athomeapp.net/ServiceData/GetUserRoundJson
+      - PUSHOVER_API_TOKEN=
+      - PUSHOVER_USER_KEY=
+    volumes:
+      - .:/usr/src/app
