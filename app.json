@@ -1,21 +1,21 @@
 {
-    "name": "Waste Collection Notifier",
-    "description": "Send push notification with council waste collections",
-    "addons": [
-        "scheduler"
-    ],
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        }
-    ],
-    "env": {
-        "ATHOMEAPP_EMAIL": {
-            "description": "Account registered with Agile@HOME App",
-            "value": ""
-        },
-        "ATHOMEAPP_URL": "https://services.athomeapp.net/ServiceData/GetUserRoundJson",
-        "PUSHOVER_API_TOKEN": "",
-        "PUSHOVER_USER_KEY": ""
+  "name": "Waste Collection Notifier",
+  "description": "Send push notification with council waste collections",
+  "addons": [
+    "papertrail",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
     }
+  ],
+  "env": {
+    "ATHOMEAPP_EMAIL": {
+      "description": "Account registered with Agile@HOME App"
+    },
+    "ATHOMEAPP_URL": "https://services.athomeapp.net/ServiceData/GetUserRoundJson",
+    "PUSHOVER_API_TOKEN": "",
+    "PUSHOVER_USER_KEY": ""
+  }
 }
