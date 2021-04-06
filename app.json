@@ -17,6 +17,9 @@
     "ATHOMEAPP_URL": "https://services.athomeapp.net/ServiceData/GetUserRoundJson",
     "PUSHOVER_API_TOKEN": "",
     "PUSHOVER_USER_KEY": "",
-    "PYTHONWARNINGS": "ignore:Unverified HTTPS request"
+    "PYTHONWARNINGS": {
+      "required": false,
+      "value": "ignore:Unverified HTTPS request"
+    }
   }
 }
